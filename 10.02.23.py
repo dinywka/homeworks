@@ -2,7 +2,7 @@ open_list = ["[","{","("]
 close_list = ["]","}",")"]
 
 
-def check(strr):
+def check(strr: str) -> str:
 	test = []
 	for i in strr:
 		if i in open_list:
@@ -21,11 +21,12 @@ def check(strr):
 
 
 
-strr = "({{}[]})"
-print(check(strr))
+if __name__ == "__main__":
+	braces = "({{}[]})"
+	print(check(braces))
 
-strr = "{[(){}]}"
-print(check(strr))
+	braces2 = "{[(){}]}"
+	print(check(braces2))
 
-strr = "{{{()}}"
-print(check(strr))
+	braces3 = "{{{()}}"
+	print(check(braces3))
