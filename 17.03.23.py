@@ -34,7 +34,33 @@
 #     json.dump(post_list, file)
 
 #10
+import psycopg2
+from psycopg2.extras import execute_values
+def change_table():
+    conn = psycopg2.connect(
+            user="postgres",
+            password="28031989",
+            host="127.0.0.1",
+            port="5432",
+            database="hw10.03.23"
+    )
 
+    cur = conn.cursor()
+
+    cur.execute("SELECT id, title FROM hw")
+    rows = cur.fetchall()
+
+    for row in rows:
+        id = row[0]
+        title = row[1]
+        new_title = f"{title}_{id}"
+        update_sql = f"UPDATE hw SET title = '{new_title}' WHERE id = {id}"
+        cur.execute(update_sql)
+
+
+    cur.execute("DELETE FROM hw WHERE title ~* '.*[13579].*'")
+    conn.commit()
+change_table()
 
 #11
 #1
@@ -51,3 +77,4 @@
 # for i in range(1, n+1):
 #     if i**2<=n:
 #         print(i**2, end=" ")
+
