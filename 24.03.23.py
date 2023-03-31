@@ -1,46 +1,46 @@
-#1
-import tkinter as tk
-import time
-
-class Calculator:
-    def __init__(self):
-        self.window = tk.Tk()
-        self.window.title("Calculator")
-        self.window.geometry("350x450")
-        self.entry = tk.Entry(self.window, width=35, justify="right")
-        self.entry.grid(row=0, column=0, columnspan=4, padx=5, pady=5)
-
-        self.buttons = (('7', '8', '9', '/'),
-                        ('4', '5', '6', '*'),
-                        ('1', '2', '3', '-'),
-                        ('0', '.', '=', '+'),
-                        ('C'))
-
-        for row, but_row in enumerate(self.buttons, 1):
-            for col, but_text in enumerate(but_row):
-                button = tk.Button(self.window, text=but_text, width=5, height=4, command=
-                                   lambda text=but_text: self.but_click(text))
-                button.grid(row=row, column=col)
-
-    def but_click(self, text):
-        if text == "=":
-            try:
-                result = eval(self.entry.get())
-                self.entry.delete(0, tk.END)
-                self.entry.insert(tk.END, result)
-            except:
-                self.entry.delete(0, tk.END)
-        elif text == 'C':
-            self.entry.delete(0, tk.END)
-        else:
-            self.entry.insert(tk.END, text)
-
-    def run(self):
-        self.window.mainloop()
-
-if __name__ == '__main__':
-    calculator = Calculator()
-    calculator.run()
+# #1
+# import tkinter as tk
+# import time
+#
+# class Calculator:
+#     def __init__(self):
+#         self.window = tk.Tk()
+#         self.window.title("Calculator")
+#         self.window.geometry("350x450")
+#         self.entry = tk.Entry(self.window, width=35, justify="right")
+#         self.entry.grid(row=0, column=0, columnspan=4, padx=5, pady=5)
+#
+#         self.buttons = (('7', '8', '9', '/'),
+#                         ('4', '5', '6', '*'),
+#                         ('1', '2', '3', '-'),
+#                         ('0', '.', '=', '+'),
+#                         ('C'))
+#
+#         for row, but_row in enumerate(self.buttons, 1):
+#             for col, but_text in enumerate(but_row):
+#                 button = tk.Button(self.window, text=but_text, width=5, height=4, command=
+#                                    lambda text=but_text: self.but_click(text))
+#                 button.grid(row=row, column=col)
+#
+#     def but_click(self, text):
+#         if text == "=":
+#             try:
+#                 result = eval(self.entry.get())
+#                 self.entry.delete(0, tk.END)
+#                 self.entry.insert(tk.END, result)
+#             except:
+#                 self.entry.delete(0, tk.END)
+#         elif text == 'C':
+#             self.entry.delete(0, tk.END)
+#         else:
+#             self.entry.insert(tk.END, text)
+#
+#     def run(self):
+#         self.window.mainloop()
+#
+# if __name__ == '__main__':
+#     calculator = Calculator()
+#     calculator.run()
 
 #2
 # class Timer:
@@ -141,72 +141,23 @@ if __name__ == '__main__':
 # print(sq)
 
 #14
-# def lst(*args):
-#     sch=0
-#     sn=0
-#     for i in args:
-#         if i%2==0:
-#             sch+=1
-#         elif i%2!=0:
-#             sn+=1
-#     if sn>sch:
-#         print("Нет")
-#     else:
-#         print("Да")
-
-# if __name__ == "__main__":
-#     lst(4, 16, 19, 31, 2)
-
-#1.2
-# import random
-# def lst(n):
-#     a=[]
-#     for i in range(n):
-#         x=random.randint(1, 100)
-#         a.append(x)
-#     print(a)
-#     sch=0
-#     sn=0
-#     for i in a:
-#         if i%2==0:
-#             sch+=1
-#         elif i%2!=0:
-#             sn+=1
-#     if sn>sch:
-#         print("Нет")
-#     else:
-#         print("Да")
+# marks = input().split()
 #
-# if __name__ == "__main__":
-#     lst(5)
-
-
-#2
-# def mass():
-#     a=[]
-#     r=1
-#     s=0
-#     for i in range(3):
-#         a.append([])
-#         for j in range(3):
-#             a[i].append(r)
-#             r+=1
-#     for i in a:
-#         for j in i:
-#             print(j, end=' ')
-#         print()
-#     for i in range(3):
-#         s+=a[i][i]
-#     print(s)
+# count_2 = marks.count('2')
+# count_3 = marks.count('3')
+# count_4 = marks.count('4')
+# count_5 = marks.count('5')
 #
-# if __name__ == "__main__":
-#     mass()
+# average_mark = sum(map(int, marks)) / len(marks)
+#
+# print(f"{count_5} {count_4} {count_3} {count_2}")
+# print(f"{average_mark:.9f}")
 
-#3
-# def cv(name, date, university, work):
-#     print(f"Name: {name}")
-#     print(f"Date of birth: {date}")
-#     print(f"Education:{university}")
-#     print(f"Experience: {work}")
-
-# cv("Dina Kulmagambetova", "28.03.1989", "kazNU", "Exante, office-manager")
+#15
+# marks = input().split()
+# new_marks = []
+# for i in marks:
+#     if i == "2":
+#         i = 3
+#     new_marks.append(str(i))
+# print(new_marks)
