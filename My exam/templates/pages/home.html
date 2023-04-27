@@ -1,0 +1,47 @@
+
+{% extends "components/base.html" %}
+
+{% block main %}
+
+<div class="container w-50">
+  <main class="form-signin small">
+    <form action="{{ url_for('create') }}" method="POST" enctype="multipart/form-data">
+      <h1 class="h3 mb-3 fw-normal">Заполните данные:</h1>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="floatingInput" placeholder="" name="description">
+        <label for="floatingInput">Задание:</label>
+      </div>
+
+      <button class="w-50 btn btn-lg btn-outline-primary d-block mx-auto my-3" type="submit">Отправить</button>
+    </form>
+  </main>
+</div>
+
+{% if products %}
+  <table class="table table-striped table-sm">
+    <thead class="thead-dark">
+      <tr>
+<!--        <th>ID</th>-->
+        <th style="width: 100%">Задание</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+       <tr>
+          <td>{{ product.description }}</td>
+          <td class="align-middle">
+<!--          <input class="form-check-input" name="check" type="checkbox" value="">-->
+          </td>
+      </tr>
+
+      {% endfor %}
+    </tbody>
+  </table>
+{% else %}
+  <div class="alert alert-danger" role="alert">
+    Нет заданий!
+  </div>
+{% endif %}
+
+{% endblock main %}
+
