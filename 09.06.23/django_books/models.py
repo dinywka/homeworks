@@ -49,3 +49,13 @@ class Books_tab(models.Model):
 
     def __str__(self):
         return f"{self.book_name} {self.author} {self.category} {self.username}"
+
+table_for_books = """
+create table Books
+id int AUTOINCREMENT
+username string (VARChar500)
+author string (VARChar500)
+book_name string (VARChar500)
+category string (VARChar500)
+description string (VARChar5000)
+"""
