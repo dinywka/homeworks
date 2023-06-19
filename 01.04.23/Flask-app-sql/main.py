@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, make_response
 import psycopg2
 
 app = Flask(__name__, static_url_path='', static_folder='static', template_folder='templates')
@@ -95,33 +95,12 @@ def create():
 
         return redirect(url_for('home'))
 
-# @app.route('/list', methods=['GET', "POST"])  # TODO Read (GET) [SELECT] Общий список книг (сокращённый формат)
-# def book_list():
-#     title = request.form.get("title", "")
-#
-#     with psycopg2.connect(
-#             user="postgres",
-#             password="28031989",
-#             host="127.0.0.1",
-#             port="5432",
-#             database="hw01.04.23"
-#     ) as connection:
-#         with connection.cursor() as cursor:
-#             cursor.execute(
-#                 "SELECT id, title, description, price, count FROM public.store_db  WHERE title LIKE %s ORDER BY id ASC;",
-#                 (f"%{title}%",)
-#             )
-#             records = cursor.fetchall()
-#
-#     print("records: ", records)
-#     _products = []
-#     for record in records:
-#         new_dict = {
-#             "id": record[0],
-#             "title": record[1],
-#             "description": record[2][:15:1] + "..." if len(record[2]) > 15 else record[2],
-#             "price": record[3],
-#             "count": record[4]
-#         }
-#         _books.append(new_dict)
-#
+
+@app.route('/to_django', methods=['GET', 'POST'])
+def to_django():
+    response = make_response("Hello, it's Flask!", 200)
+    return response
+
+
+if __name__ == '__main__':
+    app.run()
