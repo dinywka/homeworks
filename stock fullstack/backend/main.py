@@ -37,18 +37,19 @@ async def post_list_post(request: Request):
     INSERT INTO ideas
     (title) VALUES (?)
     ''', (title,))
-    return {"message": "title"}
+    return {"title": "title"}
 
-def check():
+@app.get("/ideas")
+async def get_ideas():
     with sqlite3.connect('database.db') as conn:
         cursor = conn.cursor()
-        cursor.execute('''
-    SELECT * FROM ideas
-    ''')
+        cursor.execute('SELECT * FROM ideas')
         data = cursor.fetchall()
-        print(data)
+        return [{"title": item[1]} for item in data]
 
-check()
+
+
+
 
 
 
